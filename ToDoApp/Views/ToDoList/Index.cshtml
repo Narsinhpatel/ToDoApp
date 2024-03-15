@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "ToDo List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<ToDoApp.Models.ToDoList>
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+    @Html.Partial("_Notification")
+<div class="mx-auto text-center align-content-center">
+    <h2 class="text-center mt-5">ToDo List</h2>
+    <a href="@Url.Action("Create")" class="btn btn-success mt-5 " >
+        <i class="bi bi-plus-circle"></i> Add Task
+    </a>
+
+</div>
+
+    <div class="col-md-8  p-4 mx-auto">
+
+
+        <table class="table" >
+
+            <thead>
+                <tr >
+                    <th>Task</th>
+                    <th></th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var task in Model)
+                {
+                    @Html.Partial("_ToDoListPartial", task)
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+
+

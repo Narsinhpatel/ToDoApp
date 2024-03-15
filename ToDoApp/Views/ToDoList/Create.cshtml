@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model ToDoApp.Models.ToDoList
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6 border rounded text-center p-4 ">
+            <h2>Create New Task</h2>
+            @using (Html.BeginForm("Create", "ToDoList", FormMethod.Post, new { @class = "form" }))
+            {
+                @Html.AntiForgeryToken();
+        <div class="form-group w-100">
+
+            <div class="m-3 d-flex justify-content-center">
+    
+                @Html.TextAreaFor(model => model.Task, new { @class = "form-control", rows = 4, style = "width: 400px;" })
+            </div>
+            @Html.ValidationMessageFor(model => model.Task, "", new { @class = "text-danger" })
+        </div>
+
+                <button type="submit" class="btn btn-primary mt-3 w-25">Add</button>
+                @Html.ActionLink("Cancle","Index","ToDoList",null, new { @class = "btn btn-info mt-3 w-25" })
+            }
+        </div>
+    </div>
+</div>
+
+
+
+
